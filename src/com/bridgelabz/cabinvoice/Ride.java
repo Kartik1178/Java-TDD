@@ -1,5 +1,4 @@
 package com.bridgelabz.cabinvoice;
-
 /*
  * Ride class represents a single cab ride.
  * It stores distance and time travelled.

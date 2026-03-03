@@ -1,8 +1,11 @@
-package com.bridgelabz.cabinvoice;
-
 /*
  * InvoiceGenerator handles fare calculation
- * for a single ride.
+ * for single and multiple rides.
+ */
+package com.bridgelabz.cabinvoice;
+/*
+ * InvoiceGenerator handles fare calculation
+ * for single and multiple rides.
  */
 public class InvoiceGenerator {
 
@@ -14,5 +17,14 @@ public class InvoiceGenerator {
     public double calculateFare(double distance, int time) {
         double fare = distance * COST_PER_KM + time * COST_PER_MINUTE;
         return Math.max(fare, MINIMUM_FARE);
+    }
+
+    // Calculates total fare for multiple rides
+    public double calculateFare(Ride[] rides) {
+        double totalFare = 0;
+        for (Ride ride : rides) {
+            totalFare += calculateFare(ride.getDistance(), ride.getTime());
+        }
+        return totalFare;
     }
 }
